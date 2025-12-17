@@ -69,5 +69,17 @@ public class Employee{
     public void setUpdatedAt(Timestamp updatedAt){
         this.updatedAt=updatedAt;
     }
-    public Employee(Long id,String fullName,String email,String department,)
+    public Employee(Long id,String fullName,String email,String department,String jobTitle,Boolean active,Timestamp createAt,Timestamp updatedAt){
+        this.id=id;
+        this.fullName=fullName;
+        this.email=email;
+        this.department=department;
+        this.jobTitle=jobTitle;
+        this.active=active;
+        this.createAt=createAt;
+        this.updatedAt=updatedAt;
+    }
+    public Employee(){
+        
+    }
 }
