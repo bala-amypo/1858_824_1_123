@@ -1,5 +1,4 @@
 package com.example.demo.model;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Id;
@@ -7,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate
+import org.hibernate.annotations.UpdateTimestamp;
 import java.sql.Timestamp;
 @Entity
 public class Employee{
@@ -23,7 +22,7 @@ public class Employee{
     private Boolean active;
     @CreationTimestamp
     private Timestamp createdAt;
-    @CreationTimestamp
+    @UpdateTimestamp
     private Timestamp updatedAt;
 
     // @PrePersist
@@ -90,6 +89,5 @@ public class Employee{
         this.updatedAt=updatedAt;
     }
     public Employee(){
-
     }
 }
