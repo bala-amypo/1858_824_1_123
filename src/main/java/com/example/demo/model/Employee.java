@@ -36,7 +36,7 @@ public class Employee{
     //     Timestamp(System.currentTimeMillis());
     // }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
     public void setId(Long id){
@@ -72,13 +72,13 @@ public class Employee{
     public void setActive(Boolean active){
         this.active=active;
     }
-    public Timestamp getCreateAt(){
+    public Timestamp getCreatedAt(){
         return createdAt;
     }
     public Timestamp getUpdatedAt(){
         return updatedAt;
     }
-    public Employee(Long id,String fullName,String email,String department,String jobTitle,Boolean active,Timestamp createAt,Timestamp updatedAt){
+    public Employee(Long id,String fullName,String email,String department,String jobTitle,Boolean active,Timestamp createdAt,Timestamp updatedAt){
         this.id=id;
         this.fullName=fullName;
         this.email=email;
