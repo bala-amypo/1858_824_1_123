@@ -1,11 +1,13 @@
 package com.example.demo.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 
+import java.sql.Timestamp;
 @Entity
 public class Employee{
 
@@ -27,8 +29,8 @@ public class Employee{
         Timestamp(System.currentTimeMillis());
     }
       @PrePersist
-    public void onCreate() {
-        createAt = new
+    public void updateAt() {
+        updateAt = new
         Timestamp(System.currentTimeMillis());
     }
 
@@ -71,14 +73,8 @@ public class Employee{
     public Timestamp getCreateAt(Timestamp getcreateAt){
         return createAt;
     }
-    public void setCreateAt(Timestamp createAt){
-        this.createAt=createAt;
-    }
     public Timestamp getUpdatedAt(Timestamp getupdatedAt){
         return updatedAt;
-    }
-    public void setUpdatedAt(Timestamp updatedAt){
-        this.updatedAt=updatedAt;
     }
     public Employee(Long id,String fullName,String email,String department,String jobTitle,Boolean active,Timestamp createAt,Timestamp updatedAt){
         this.id=id;
