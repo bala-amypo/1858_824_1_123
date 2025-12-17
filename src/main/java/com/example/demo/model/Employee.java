@@ -27,39 +27,46 @@ public class Employee{
     public void setId(Long id){
         this.id=id;
     }
-    public String getfullName() {
+    public String getFullName() {
         return fullName;
     }
-    public void setfullName(String fullName) {
+    public void setFullName(String fullName) {
         this.fullName=fullName;
     }
-    public String getemail(String email){
+    public String getEmail(String email){
         return email;
     }
-    public void setemail(String email){
+    public void setEmail(String email){
         this.email=email;
     }
-    public String getdepartment(String getdepartment){
+    public String getDepartment(String getdepartment){
         return department;
     }
-    public void setdepartment(String department){
+    public void setDepartment(String department){
         this.department=department;
     }
-    public String getjobTitle(String getjobTitle){
+    public String getJobTitle(String getjobTitle){
         return jobTitle;
     }
-    public void setjobTitle(String jobTitle){
+    public void setJobTitle(String jobTitle){
         this.jobTitle=jobTitle;
     }
-    public Boolean getactive(Boolean getactive){
+    public Boolean getActive(Boolean getactive){
         return active;
     }
-    public void setactive(Boolean active){
+    public void setActive(Boolean active){
         this.active=active;
     }
-    public Timestamp getcreateAt(Timestamp getcreateAt){
+    public Timestamp getCreateAt(Timestamp getcreateAt){
         return createAt;
     }
     public void setCreateAt(Timestamp createAt){
         this.createAt=createAt;
+    }
+    public Timestamp getUpdatedAt(Timestamp getupdatedAt){
+        return updatedAt;
+    }
+    public void setUpdatedAt(Timestamp updatedAt){
+        this.updatedAt=updatedAt;
+    }
 }
