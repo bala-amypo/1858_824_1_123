@@ -85,7 +85,7 @@ public class Employee{
         this.department=department;
         this.jobTitle=jobTitle;
         this.active=active;
-        this.createAt=createAt;
+        this.createdAt=createdAt;
         this.updatedAt=updatedAt;
     }
     public Employee(){
