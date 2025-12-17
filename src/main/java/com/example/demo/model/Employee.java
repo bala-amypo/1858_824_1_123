@@ -2,7 +2,7 @@ package com.example.demo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import 
+import jakarta.per
 
 @Entity
 public class Employee{
