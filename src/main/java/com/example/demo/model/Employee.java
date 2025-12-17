@@ -2,7 +2,7 @@ package com.example.demo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.per
+import jakarta.persistence.Column;
 
 @Entity
 public class Employee{
@@ -13,6 +13,9 @@ public class Employee{
     private String fullName;
     @Column(unique=true)
     private String email;
-    private
+    private String department;
+    private String jobTitle;
+    private Boolean active;
+    private Time
 
 }
