@@ -55,6 +55,11 @@ public class Employee{
         return active;
     }
     public void setactive(Boolean active){
-        this.department=department;
-
+        this.active=active;
+    }
+    public Timestamp getcreateAt(Timestamp getcreateAt){
+        return createAt;
+    }
+    public void setCreateAt(Timestamp createAt){
+        this.createAt=createAt;
 }
