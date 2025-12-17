@@ -27,6 +27,12 @@ public class Employee{
     public void setId(Long id){
         this.id=id;
     }
-    public String
+    public String getfullName() {
+        return fullName;
+    }
+    public void setfullName(String fullName) {
+        this.fullName=fullName;
+    }
+    public String getemail(String ema)
 
 }
