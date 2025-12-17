@@ -42,6 +42,13 @@ public class Employee{
     public String getdepartment(String getdepartment){
         return department;
     }
-    public void setdepartment
+    public void setdepartment(String department){
+        this.department=department;
+    }
+    public String getjobTitle(String getjobTitle){
+        return jobTitle;
+    }
+    public void setdepartment(String department){
+        this.department=department;
 
 }
