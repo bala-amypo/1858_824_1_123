@@ -6,8 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
-import org.hibernate.annatation.
-
+import org.hibernate.annatations.CreationTimestamp;
 import java.sql.Timestamp;
 @Entity
 public class Employee{
@@ -21,19 +20,21 @@ public class Employee{
     private String department;
     private String jobTitle;
     private Boolean active;
+    @CreationTimestamp
     private Timestamp createdAt;
+    @CreationTimestamp
     private Timestamp updatedAt;
 
-    @PrePersist
-    public void onCreate() {
-        createAt = new
-        Timestamp(System.currentTimeMillis());
-    }
-      @PrePersist
-    public void updateAt() {
-        updateAt = new
-        Timestamp(System.currentTimeMillis());
-    }
+    // @PrePersist
+    // public void onCreate() {
+    //     createAt = new
+    //     Timestamp(System.currentTimeMillis());
+    // }
+    //   @PrePersist
+    // public void updateAt() {
+    //     updateAt = new
+    //     Timestamp(System.currentTimeMillis());
+    // }
 
     public long getId() {
         return id;
