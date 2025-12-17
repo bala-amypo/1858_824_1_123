@@ -16,6 +16,11 @@ public class Employee{
     private String department;
     private String jobTitle;
     private Boolean active;
-    private Time
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+
+    public long getId() {
+        return id;
+    }
 
 }
