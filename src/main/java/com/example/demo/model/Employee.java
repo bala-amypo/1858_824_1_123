@@ -9,7 +9,7 @@ import jakarta.persistence.Column;
 @Entity
 public class Employee{
 
-    @id
+    @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String fullName;
@@ -69,4 +69,5 @@ public class Employee{
     public void setUpdatedAt(Timestamp updatedAt){
         this.updatedAt=updatedAt;
     }
+    public Employee(Long id,String fullName,String email,String department,)
 }
