@@ -9,7 +9,6 @@ import java.sql.Timestamp;
 public class Employee{
 
     @Id
-    // @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String fullName;
     @Column(unique=true)
@@ -22,16 +21,6 @@ public class Employee{
     @UpdateTimestamp
     private Timestamp updatedAt;
 
-    // @PrePersist
-    // public void onCreate() {
-    //     createAt = new
-    //     Timestamp(System.currentTimeMillis());
-    // }
-    //   @PrePersist
-    // public void updateAt() {
-    //     updateAt = new
-    //     Timestamp(System.currentTimeMillis());
-    // }
 
     public Long getId() {
         return id;
