@@ -21,6 +21,17 @@ public class Employee{
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
+    @PrePersist
+    public void onCreate() {
+        createAt = new
+        Timestamp(System.currentTimeMillis());
+    }
+      @PrePersist
+    public void onCreate() {
+        createAt = new
+        Timestamp(System.currentTimeMillis());
+    }
+
     public long getId() {
         return id;
     }
@@ -80,6 +91,6 @@ public class Employee{
         this.updatedAt=updatedAt;
     }
     public Employee(){
-        
+
     }
 }
