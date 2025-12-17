@@ -33,6 +33,15 @@ public class Employee{
     public void setfullName(String fullName) {
         this.fullName=fullName;
     }
-    public String getemail(String ema)
+    public String getemail(String email){
+        return email;
+    }
+    public void setemail(String email){
+        this.email=email;
+    }
+    public String getdepartment(String getdepartment){
+        return department;
+    }
+    public void setdepartment
 
 }
