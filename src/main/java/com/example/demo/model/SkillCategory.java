@@ -28,8 +28,14 @@ public class SkillCategory{
     public String getDescription() {
         return description;
     }
-    public void setDescription(String description){
+    public void setDescription(String description) {
         this.description=description;
     }
-    public Boolean get
+    public Boolean getActive() {
+        return active;
+    }
+    public void setActive(Boolean active) {
+        this.active=active;
+    }
+    public SkillCategory(Long id,)
 }
