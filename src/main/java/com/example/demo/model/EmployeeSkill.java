@@ -54,7 +54,10 @@ public class EmployeeSkill{
         this.skill=skill;
         this.proficiencyLevel=proficiencyLevel;
         this.yearOfExperience=yearOfExperience;
-        this.active.active;
+        this.active=active;
     } 
-    public class EmployeeSkill()
+    public EmployeeSkill()
+    {
+
+    }
 }
