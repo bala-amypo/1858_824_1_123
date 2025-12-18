@@ -9,6 +9,7 @@ public class Skill{
     @Id
     private Long id;
     @Column(unique=true)
-    private String 
+    private String name;
+    
 
 }
