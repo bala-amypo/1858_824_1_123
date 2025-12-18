@@ -31,5 +31,5 @@ public class SkillCategory{
     public void setDescription(String description){
         this.description=description;
     }
-    publi
+    public Boolean get
 }
