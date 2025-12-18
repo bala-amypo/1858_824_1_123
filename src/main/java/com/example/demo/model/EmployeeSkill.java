@@ -18,5 +18,15 @@ public class EmployeeSkill{
     public void setId(Long id) {
         this.id=id;
     }
-    public String getEmployee
+    public String getEmployee() {
+        return employee;
+    }
+    public void setEmployee(String employee){
+        this
+    public String getSkill() {
+        ret
+    public void setSkill(String skill){
+        this.skill=skill;
+    }
+    public String get 
 }
