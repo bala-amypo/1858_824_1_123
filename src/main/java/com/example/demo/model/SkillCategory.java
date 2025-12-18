@@ -28,5 +28,8 @@ public class SkillCategory{
     public String getDescription() {
         return description;
     }
-    public void setDescription(String description)
+    public void setDescription(String description){
+        this.description=description;
+    }
+    publi
 }
