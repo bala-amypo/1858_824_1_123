@@ -42,5 +42,11 @@ public class EmployeeSkill{
     public void setYearOfExperience(Long yearOfExperience) {
        this.yearOfExperience=yearOfExperience;
     }
-    
+    public Boolean getActive() {
+        return active;
+    }
+    public void setActive(Boolean active) {
+       this.active=active;
+    }
+    public EmployeeSkill(Long id,String employee,String skill,String proficiencyLevel,String 
 }
