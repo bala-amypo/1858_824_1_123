@@ -10,6 +10,6 @@ public class Skill{
     private Long id;
     @Column(unique=true)
     private String name;
-    
+    private
 
 }
