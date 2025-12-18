@@ -36,6 +36,15 @@ public class Skill{
     public String getDescription() {
         return description;
     }
-    public void setDescri
+    public void setDescription() {
+        this.description=description;
+    }
+    public Boolean getActive() {
+        return active;
+    }
+    public void setActive() {
+        this.active=active;
+    }
+    public Skill(Long id,String name,)
 
 }
