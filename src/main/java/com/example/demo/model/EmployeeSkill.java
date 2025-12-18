@@ -6,5 +6,17 @@ import jakarta.persistence.Id;
 public class EmployeeSkill{
     @Id
     private Long id;
-    private String 
+    private String employee;
+    private String skill;
+    private String proficiencyLevel;
+    private Long yearsOfExperience;
+    private Boolean active;
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id=id;
+    }
+    public String get
 }
