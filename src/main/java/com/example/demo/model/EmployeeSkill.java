@@ -50,6 +50,11 @@ public class EmployeeSkill{
     }
     public EmployeeSkill(Long id,String employee,String skill,String proficiencyLevel,Long yearOfExperience,Boolean active){
         this.id=id;
-        
+        this.employee=employee;
+        this.skill=skill;
+        this.proficiencyLevel=proficiencyLevel;
+        this.yearOfExperience=yearOfExperience;
+        this.active.active;
     } 
+    public class EmployeeSkill()
 }
