@@ -22,11 +22,19 @@ public class EmployeeSkill{
         return employee;
     }
     public void setEmployee(String employee){
-        this
+        this.employee=employee;
+    }
     public String getSkill() {
-        ret
+        return skill;
+    }
     public void setSkill(String skill){
         this.skill=skill;
     }
-    public String get 
+    public String getProficiencyLevel() {
+        return proficiencyLevel;
+    }
+    public void setProficiencyLevel(String proficiencyLevel) {
+        this.proficiencyLevel=proficiencyLevel;
+    }
+    public 
 }
