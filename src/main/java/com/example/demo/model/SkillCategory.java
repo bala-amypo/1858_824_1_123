@@ -19,4 +19,13 @@ public class SkillCategory{
     public void setId(Long id) {
         this.id = id;
     }
+    public String getCategoryName() {
+        return category;
+    }
+    public void setCategoryName() {
+        this.categoryName=categoryName;
+    }
+    public String getDescription() {
+        return description
+    }
 }
