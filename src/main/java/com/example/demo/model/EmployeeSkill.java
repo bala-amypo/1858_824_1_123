@@ -36,5 +36,11 @@ public class EmployeeSkill{
     public void setProficiencyLevel(String proficiencyLevel) {
         this.proficiencyLevel=proficiencyLevel;
     }
-    public 
+    public Long getYearOfExperience() {
+        return yearOfExperience;
+    }
+    public void setYearOfExperience(Long yearOfExperience) {
+       this.yearOfExperience=yearOfExperience;
+    }
+    
 }
