@@ -36,11 +36,11 @@ public class EmployeeSkill{
     public void setProficiencyLevel(String proficiencyLevel) {
         this.proficiencyLevel=proficiencyLevel;
     }
-    public Long getYearOfExperience() {
-        return yearOfExperience;
+    public Long getYearsOfExperience() {
+        return yearsOfExperience;
     }
-    public void setYearOfExperience(Long yearOfExperience) {
-       this.yearOfExperience=yearOfExperience;
+    public void setYearsOfExperience(Long yearsOfExperience) {
+       this.yearsOfExperience=yearsOfExperience;
     }
     public Boolean getActive() {
         return active;
@@ -48,12 +48,12 @@ public class EmployeeSkill{
     public void setActive(Boolean active) {
        this.active=active;
     }
-    public EmployeeSkill(Long id,String employee,String skill,String proficiencyLevel,Long yearOfExperience,Boolean active){
+    public EmployeeSkill(Long id,String employee,String skill,String proficiencyLevel,Long yearsOfExperience,Boolean active){
         this.id=id;
         this.employee=employee;
         this.skill=skill;
         this.proficiencyLevel=proficiencyLevel;
-        this.yearOfExperience=yearOfExperience;
+        this.yearsOfExperience=yearsOfExperience;
         this.active=active;
     } 
     public EmployeeSkill()
