@@ -1,8 +1,8 @@
 package com.example.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.example.demo.model.;
+import com.example.demo.model.Employee;
 
-public interface InteractionRuleRepository extends JpaRepository<InteractionRule,Long>{
+public interface EmployeeRepository extends JpaRepository<Employee,Long>{
 
 }
