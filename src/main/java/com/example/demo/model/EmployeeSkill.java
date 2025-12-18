@@ -48,5 +48,8 @@ public class EmployeeSkill{
     public void setActive(Boolean active) {
        this.active=active;
     }
-    public EmployeeSkill(Long id,String employee,String skill,String proficiencyLevel,String 
+    public EmployeeSkill(Long id,String employee,String skill,String proficiencyLevel,Long yearOfExperience,Boolean active){
+        this.id=id;
+        
+    } 
 }
