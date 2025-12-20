@@ -26,16 +26,16 @@ public class EmployeeSkill{
     public void setId(Long id) {
         this.id=id;
     }
-    public Skill getEmployee() {
+    public Employee getEmployee() {
         return employee;
     }
-    public void setEmployee(Skill employee){
+    public void setEmployee(Employee employee){
         this.employee=employee;
     }
-    public String getSkill() {
+    public Skill getSkill() {
         return skill;
     }
-    public void setSkill(String skill){
+    public void setSkill(Skill skill){
         this.skill=skill;
     }
     public String getProficiencyLevel() {
@@ -56,7 +56,7 @@ public class EmployeeSkill{
     public void setActive(Boolean active) {
        this.active=active;
     }
-    public EmployeeSkill(Long id,String employee,String skill,String proficiencyLevel,Long yearsOfExperience,Boolean active){
+    public EmployeeSkill(Long id,Employee employee,Skill skill,String proficiencyLevel,Long yearsOfExperience,Boolean active){
         this.id=id;
         this.employee=employee;
         this.skill=skill;
