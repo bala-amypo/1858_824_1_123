@@ -1,5 +1,8 @@
 package com.example.demo.model;
+import com.example.demo.model.Employee;
 import com.example.demo.model.Skill;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -8,7 +11,7 @@ public class EmployeeSkill{
     @Id
     private Long id;
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name="employee_id")
     private Employee employee;
     @ManyToOne
     @JoinColumn(name="skill_id")
