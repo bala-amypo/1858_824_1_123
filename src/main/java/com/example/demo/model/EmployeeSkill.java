@@ -1,4 +1,5 @@
 package com.example.demo.model;
+import com.example.demo.model.Skill;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -6,7 +7,9 @@ import jakarta.persistence.Id;
 public class EmployeeSkill{
     @Id
     private Long id;
-    private String employee;
+    @ManyToOne
+    @JoinColumn(name="skill_id")
+    private Sk employee;
     private String skill;
     private String proficiencyLevel;
     private Long yearsOfExperience;
