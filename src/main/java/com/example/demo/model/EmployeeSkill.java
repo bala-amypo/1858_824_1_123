@@ -8,9 +8,11 @@ public class EmployeeSkill{
     @Id
     private Long id;
     @ManyToOne
+    @JoinColumn
+    private Employee employee;
+    @ManyToOne
     @JoinColumn(name="skill_id")
-    private Sk employee;
-    private String skill;
+    private Skill skill;
     private String proficiencyLevel;
     private Long yearsOfExperience;
     private Boolean active;
@@ -21,10 +23,10 @@ public class EmployeeSkill{
     public void setId(Long id) {
         this.id=id;
     }
-    public String getEmployee() {
+    public Skill getEmployee() {
         return employee;
     }
-    public void setEmployee(String employee){
+    public void setEmployee(Skill employee){
         this.employee=employee;
     }
     public String getSkill() {
