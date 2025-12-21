@@ -23,7 +23,11 @@ public class SkillServiceImpl implements SkillService{
    }
 public Skill updateSkill(Long id,Skill skill){
     Skill exi=obj.getById(id);
-    exi.setName(Skill.)
+    exi.setId(Skill.getId());
+    exi.setName(Skill.getName());
+    exi.setEmail(Skill.getEmail());
+    exi.setDepartment(Skill.getDepartment());
+    exi.setjobTitle(Skill get)
 }
 
 }
