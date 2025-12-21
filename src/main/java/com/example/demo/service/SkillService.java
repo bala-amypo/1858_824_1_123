@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;   // FIXED IMPORT
 
 public interface SkillService{
-    Skill createSkill(Skill skill);
-    Skill updateSkill(Long id,Skill skill);
-    Skill getSkillById(Long id);
-    List<Skill> getAllSkills();
-    ResponseEntity<String> deactivateSkill(Long id);
+   public  Skill createSkill(Skill skill);
+    public Skill updateSkill(Long id,Skill skill);
+    public Skill getSkillById(Long id);
+    public List<Skill> getAllSkills();
+    public ResponseEntity<String> deactivateSkill(Long id);
 }
