@@ -7,9 +7,6 @@ import org.springframework.stereotype.Service;
 import com.example.demo.repository.EmployeeRepository;
 
 import java.util.List;
-import java.util.Optional;
-
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 @Service
@@ -29,14 +26,11 @@ public class EmployeeServiceimpl implements EmployeeService {
         Employee exi = obj.findById(id).orElse(null); 
 
         if(exi != null){
-            exi.setId(employee.getId());              
-            exi.setName(employee.getName());
             exi.setEmail(employee.getEmail());
             exi.setDepartment(employee.getDepartment());
-            exi.setDesignation(employee.getDesignation());
             exi.setActive(employee.getActive());
             
-            return obj.save(exi);                  
+            return obj.save(exi);
         }
 
         return null;                               
@@ -44,7 +38,7 @@ public class EmployeeServiceimpl implements EmployeeService {
 
     @Override
     public Employee getEmployeeById(Long id){
-        return obj.findById(id).orElse(null);      
+        return obj.findById(id).orElse(null);
     }
 
     @Override
@@ -55,7 +49,7 @@ public class EmployeeServiceimpl implements EmployeeService {
     @Override
     public ResponseEntity<String> deactivateEmployee(Long id){
 
-        Employee jk = obj.findById(id).orElse(null);   
+        Employee jk = obj.findById(id).orElse(null);
 
         jk.setActive(false);
         obj.save(jk);
