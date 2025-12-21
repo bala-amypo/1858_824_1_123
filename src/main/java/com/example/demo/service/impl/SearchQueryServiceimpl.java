@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.SearchQueryRecord;
-import com.example.demo.repository.SearchQueryRepository;
+import com.example.demo.repository.SearchQueryRecordRepository;
 import com.example.demo.service.SearchQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import java.util.List;
 public class SearchQueryServiceimpl implements SearchQueryService {
 
     @Autowired
-    SearchQueryRepository repo;
+    SearchQueryRecordRepository repo;
 
     @Override
     public SearchQueryRecord createSearchQuery(SearchQueryRecord obj) {
@@ -23,7 +23,7 @@ public class SearchQueryServiceimpl implements SearchQueryService {
     @Override
     public SearchQueryRecord updateSearchQuery(Long id, SearchQueryRecord obj) {
 
-        SearchQuery ex = repo.findById(id).orElse(null);
+        SearchQueryRecord ex = repo.findById(id).orElse(null);
 
         if(ex != null) {
             ex.setName(obj.getName());
