@@ -36,6 +36,7 @@ public List<Skill> getAllSkills(){
     return obj.findAll();
 }
 public void deactiveSkill(Long id){
-    Skill =obj.getById(id);
+    Skill jk=obj.getById(id);
+    obj.delete(jk);
 }
 }
