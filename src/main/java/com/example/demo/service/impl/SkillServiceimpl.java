@@ -25,9 +25,8 @@ public Skill updateSkill(Long id,Skill skill){
     Skill exi=obj.getById(id);
     exi.setId(Skill.getId());
     exi.setName(Skill.getName());
-    exi.setEmail(Skill.getEmail());
-    exi.setDepartment(Skill.getDepartment());
-    exi.setjobTitle(Skill get)
+    exi.setCategory(Skill.getCategory());
+    exi.
 }
 
 }
