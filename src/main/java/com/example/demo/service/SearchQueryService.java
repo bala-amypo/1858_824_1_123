@@ -1,14 +1,14 @@
 package com.example.demo.service;
 
-import com.example.demo.model.SearchQuery;
+import com.example.demo.model.Query;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 
-public interface SearchQueryService {
+public interface QueryService {
 
-    public SearchQuery createSearchQuery(SearchQuery searchQuery);
-    public SearchQuery updateSearchQuery(Long id, SearchQuery searchQuery);
-    public SearchQuery getSearchQueryById(Long id);
-    public List<SearchQuery> getAllSearchQueries();
-    public ResponseEntity<String> deactivateSearchQuery(Long id);
+    public Query createQuery(Query query);
+    public Query updateQuery(Long id, Query query);
+    public Query getQueryById(Long id);
+    public List<Query> getAllQueries();
+    public ResponseEntity<String> deactivateQuery(Long id);
 }
