@@ -11,11 +11,14 @@ import java.sql.Timestamp;
 public class SearchQueryRecord {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Long searcherId;
     private String skillsRequested;
     private Long resultsCount;
     private Timestamp searchedAt;
+
     @PrePersist
     protected void onCreate() {
         this.searchedAt = new Timestamp(System.currentTimeMillis());
@@ -49,7 +52,7 @@ public class SearchQueryRecord {
         return resultsCount;
     }
 
-    public void setResultsCount(Long tsCount) {
+    public void setResultsCount(Long resultsCount) {
         this.resultsCount = resultsCount;
     }
 
@@ -60,15 +63,17 @@ public class SearchQueryRecord {
     public void setSearchedAt(Timestamp searchedAt) {
         this.searchedAt = searchedAt;
     }
-    public SearchQueryRecord(Long id,Long searcherId,String skillsRequested,Long resultsCount,Timestamp searchedAt){
+
+
+    public SearchQueryRecord(Long id, Long searcherId, String skillsRequested, Long resultsCount, Timestamp searchedAt){
         this.id = id;
         this.searcherId = searcherId;
         this.skillsRequested = skillsRequested;
         this.resultsCount = resultsCount;
         this.searchedAt = searchedAt;
     }
+
     public SearchQueryRecord(){
-        
     }
 
 }
