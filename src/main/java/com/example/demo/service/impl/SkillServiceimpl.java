@@ -17,7 +17,13 @@ public class SkillServiceImpl implements SkillService{
 
     @Autowired
     SkillRepository obj;
-   Skill createSkill(Skill skill)
- 
+
+   public Skill createSkill(Skill skill){
+    return obj.save(skill);
+   }
+public Skill updateSkill(Long id,Skill skill){
+    Skill exi=obj.getById(id);
+    exi.setName(Skill.)
+}
 
 }
