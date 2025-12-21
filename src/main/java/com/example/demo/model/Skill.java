@@ -36,7 +36,7 @@ public class Skill{
     public String getDescription() {
         return description;
     }
-    public void setDescription() {
+    public void setDescription(String Description) {
         this.description=description;
     }
     public Boolean getActive() {
