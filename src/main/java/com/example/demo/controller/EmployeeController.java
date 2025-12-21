@@ -30,13 +30,11 @@ public class EmployeeController {
         return employeeService.getEmployeeById(id);
     }
 
-    // GET ALL EMPLOYEES
     @GetMapping("/getAll")
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
 
-    // DEACTIVATE EMPLOYEE
     @PutMapping("/deactivate/{id}")
     public ResponseEntity<String> deactivateEmployee(@PathVariable Long id) {
         return employeeService.deactivateEmployee(id);
