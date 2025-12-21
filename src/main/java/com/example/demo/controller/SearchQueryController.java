@@ -2,41 +2,41 @@ package com.example.demo.controller;
 
 import com.example.demo.model.SearchQuery;
 import com.example.demo.service.SearchQueryService;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
-@RequestMapping("/searchQuery")
+@RequestMapping("/searchquery")
 public class SearchQueryController {
 
     @Autowired
-    SearchQueryService searchQueryService;
+    SearchQueryService service;
 
     @PostMapping("/create")
-    public SearchQuery createSearchQuery(@RequestBody SearchQuery searchQuery) {
-        return searchQueryService.createSearchQuery(searchQuery);
+    public SearchQuery create(@RequestBody SearchQuery obj){
+        return service.createSearchQuery(obj);
     }
 
     @PutMapping("/update/{id}")
-    public SearchQuery updateSearchQuery(@PathVariable Long id,@RequestBody SearchQuery searchQuery) {
-        return searchQueryService.updateSearchQuery(id, searchQuery);
+    public SearchQuery update(@PathVariable Long id, @RequestBody SearchQuery obj) {
+        return service.updateSearchQuery(id, obj);
     }
 
     @GetMapping("/get/{id}")
-    public SearchQuery getSearchQueryById(@PathVariable Long id) {
-        return searchQueryService.getSearchQueryById(id);
+    public SearchQuery getById(@PathVariable Long id){
+        return service.getSearchQueryById(id);
     }
 
-    @GetMapping("/getAll")
-    public List<SearchQuery> getAllSearchQueries() {
-        return searchQueryService.getAllSearchQueries();
+    @GetMapping("/all")
+    public List<SearchQuery> getAll(){
+        return service.getAllSearchQuery();
     }
 
     @PutMapping("/deactivate/{id}")
-    public ResponseEntity<String> deactivateSearchQuery(@PathVariable Long id) {
-        return searchQueryService.deactivateSearchQuery(id);
+    public ResponseEntity<String> deactivate(@PathVariable Long id){
+        return service.deactivateSearchQuery(id);
     }
+
 }
