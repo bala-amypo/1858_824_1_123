@@ -18,38 +18,29 @@ public class SkillServiceimpl implements SkillService{
     @Autowired
     SkillRepository obj;
 
-    // ---------------------------
-    // createSkill
-    // ---------------------------
     @Override
     public Skill createSkill(Skill skill){
         return obj.save(skill);
     }
 
-    // ---------------------------
-    // updateSkill
-    // ---------------------------
     @Override
     public Skill updateSkill(Long id,Skill skill){
 
-        Skill exi = obj.findById(id).orElse(null); // FIXED findById
+        Skill exi = obj.findById(id).orElse(null); 
 
         if(exi != null){
-            exi.setId(skill.getId());              // YOUR STRUCTURE KEPT
+            exi.setId(skill.getId());              
             exi.setName(skill.getName());
             exi.setCategory(skill.getCategory());
             exi.setDescription(skill.getDescription());
             exi.setActive(skill.getActive());
             
-            return obj.save(exi);                  // ADDED RETURN
+            return obj.save(exi);                  
         }
 
-        return null;                               // REQUIRED RETURN
+        return null;                               
     }
 
-    // ---------------------------
-    // getById
-    // ---------------------------
     @Override
     public Skill getSkillById(Long id){
         return obj.findById(id).orElse(null);      // FIX TYPE
