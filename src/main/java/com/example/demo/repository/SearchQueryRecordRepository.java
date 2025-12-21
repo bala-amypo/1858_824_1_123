@@ -1,8 +1,8 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.Query;
+import com.example.demo.model.SearchQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface QueryRepository extends JpaRepository<Query, Long> {
+public interface SearchQueryRepository extends JpaRepository<SearchQuery, Long> {
 
 }
