@@ -9,6 +9,5 @@ public interface EmployeeSkillService {
     public EmployeeSkill updateEmployeeSkill(Long id, EmployeeSkill employeeSkill);
     public EmployeeSkill getEmployeeSkillById(Long id);
     public List<EmployeeSkill> getAllEmployeeSkills();
-
     public ResponseEntity<String> deactivateEmployeeSkill(Long id);
 }
