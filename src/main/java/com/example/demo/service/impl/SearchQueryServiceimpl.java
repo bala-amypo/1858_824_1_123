@@ -26,10 +26,12 @@ public class SearchQueryServiceimpl implements SearchQueryService {
         SearchQueryRecord ex = repo.findById(id).orElse(null);
 
         if(ex != null) {
-            ex.setName(obj.getName());
-            ex.setQueryText(obj.getQueryText());
-            ex.setDescription(obj.getDescription());
-            ex.setActive(obj.getActive());
+
+            ex.setSearcherId(obj.getSearcherId());
+            ex.setSkillsRequested(obj.getSkillsRequested());
+            ex.setResultsCount(obj.getResultsCount());
+            ex.setSearchedAt(obj.getSearchedAt());
+
             return repo.save(ex);
         }
 
@@ -50,9 +52,9 @@ public class SearchQueryServiceimpl implements SearchQueryService {
     public ResponseEntity<String> deactivateSearchQuery(Long id) {
 
         SearchQueryRecord ex = repo.findById(id).orElse(null);
-        ex.setActive(false);
-        repo.save(ex);
 
-        return ResponseEntity.ok("Search Query Deactivated");
+        repo.delete(ex);
+
+        return ResponseEntity.ok("Search Query Deleted");
     }
 }
