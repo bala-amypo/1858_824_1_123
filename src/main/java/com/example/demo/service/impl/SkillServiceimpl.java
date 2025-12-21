@@ -17,7 +17,7 @@ public class SkillServiceImpl implements SkillService{
 
     @Autowired
     SkillRepository obj;
-    
+   Skill createSkill(Skill skill)
  
 
 }
