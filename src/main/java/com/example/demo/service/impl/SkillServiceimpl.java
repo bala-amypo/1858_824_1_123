@@ -32,5 +32,10 @@ public Skill updateSkill(Long id,Skill skill){
 public Skill getSkillById(Long id){
     return obj.findById(id);
 }
-public List<Skill> 
+public List<Skill> getAllSkills(){
+    return obj.findAll();
+}
+public void deactiveSkill(Long id){
+    Skill =obj.getById(id);
+}
 }
