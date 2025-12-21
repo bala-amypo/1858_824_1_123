@@ -74,9 +74,5 @@ public class SkillServiceimpl implements SkillService{
             jk.setActive(false);
             obj.save(jk);
             return ResponseEntity.ok("Skill Deactivated");
-
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body("Skill Not Found");
     }
 }
