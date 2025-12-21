@@ -1,19 +1,16 @@
 package com.example.demo.model;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+
+
 
 @Entity
-public class SearchQuery {
-
+public class SkillCategory{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String name;
-    private String query;
+    @Column(unique = true)
+    private String categoryName;
     private String description;
     private Boolean active;
 
@@ -23,33 +20,23 @@ public class SearchQuery {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public String getName() {
-        return name;
+    public String getCategoryName() {
+        return categoryName;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setCategoryName(String categoryName) {
+        this.categoryName=categoryName;
     }
-
-    public String getQuery() {
-        return query;
-    }
-    public void setQuery(String query) {
-        this.query = query;
-    }
-
     public String getDescription() {
         return description;
     }
     public void setDescription(String description) {
-        this.description = description;
+        this.description=description;
     }
-
     public Boolean getActive() {
         return active;
     }
     public void setActive(Boolean active) {
-        this.active = active;
+        this.active=active;
     }
     public SkillCategory(Long id,String categoryName,String description,Boolean active){
         this.id=id;
