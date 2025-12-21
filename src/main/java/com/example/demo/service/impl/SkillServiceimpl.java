@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 @Service
-public class SkillServiceImpl implements SkillService{
+public class SkillServiceimpl implements SkillService{
 
     @Autowired
     SkillRepository obj;
