@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 @Entity
-public class Query {
+public class SearchQueryRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,7 +51,6 @@ public class Query {
     public void setActive(Boolean active) {
         this.active = active;
     }
-}
 
     public SearchQueryRecord(Long id,Long searcherId,String skillsRequested,Long resultsCount,Timestamp searchedAt){
         this.id = id;
