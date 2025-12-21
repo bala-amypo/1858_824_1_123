@@ -15,22 +15,22 @@ public class SearchQueryController {
     SearchQueryService service;
 
     @PostMapping("/create")
-    public SearchQuery create(@RequestBody SearchQuery obj){
+    public SearchQueryRecord create(@RequestBody SearchQueryRecord obj){
         return service.createSearchQuery(obj);
     }
 
     @PutMapping("/update/{id}")
-    public SearchQuery update(@PathVariable Long id, @RequestBody SearchQuery obj) {
+    public SearchQueryRecord update(@PathVariable Long id, @RequestBody SearchQueryRecord obj) {
         return service.updateSearchQuery(id, obj);
     }
 
     @GetMapping("/get/{id}")
-    public SearchQuery getById(@PathVariable Long id){
+    public SearchQueryRecord getById(@PathVariable Long id){
         return service.getSearchQueryById(id);
     }
 
     @GetMapping("/all")
-    public List<SearchQuery> getAll(){
+    public List<SearchQueryRecord> getAll(){
         return service.getAllSearchQuery();
     }
 
