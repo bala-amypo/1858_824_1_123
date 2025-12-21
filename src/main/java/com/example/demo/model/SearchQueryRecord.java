@@ -4,62 +4,55 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.PrePersist;
-import java.sql.Timestamp;
 
 @Entity
-public class SearchQueryRecord {
+public class Query {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long searcherId;
-    private String skillsRequested;
-    private Long resultsCount;
-    private Timestamp searchedAt;
-    @PrePersist
-    protected void onCreate() {
-        this.searchedAt = new Timestamp(System.currentTimeMillis());
-    }
+
+    private String name;
+    private String queryText;
+    private String description;
+    private Boolean active;
 
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getSearcherId() {
-        return searcherId;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setSearcherId(Long searcherId) {
-        this.searcherId = searcherId;
+    public String getQueryText() {
+        return queryText;
+    }
+    public void setQueryText(String queryText) {
+        this.queryText = queryText;
     }
 
-    public String getSkillsRequested() {
-        return skillsRequested;
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setSkillsRequested(String skillsRequested) {
-        this.skillsRequested = skillsRequested;
+    public Boolean getActive() {
+        return active;
     }
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+}
 
-    public Long getResultsCount() {
-        return resultsCount;
-    }
-
-    public void setResultsCount(Long tsCount) {
-        this.resultsCount = resultsCount;
-    }
-
-    public Timestamp getSearchedAt() {
-        return searchedAt;
-    }
-
-    public void setSearchedAt(Timestamp searchedAt) {
-        this.searchedAt = searchedAt;
-    }
     public SearchQueryRecord(Long id,Long searcherId,String skillsRequested,Long resultsCount,Timestamp searchedAt){
         this.id = id;
         this.searcherId = searcherId;
