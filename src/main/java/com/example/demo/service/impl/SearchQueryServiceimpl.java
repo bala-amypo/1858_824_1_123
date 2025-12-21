@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.SearchQuery;
+import com.example.demo.model.SearchQueryRecord;
 import com.example.demo.repository.SearchQueryRepository;
 import com.example.demo.service.SearchQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +16,12 @@ public class SearchQueryServiceimpl implements SearchQueryService {
     SearchQueryRepository repo;
 
     @Override
-    public SearchQuery createSearchQuery(SearchQuery obj) {
+    public SearchQueryRecord createSearchQuery(SearchQueryRecord obj) {
         return repo.save(obj);
     }
 
     @Override
-    public SearchQuery updateSearchQuery(Long id, SearchQuery obj) {
+    public SearchQueryRecord updateSearchQuery(Long id, SearchQueryRecord obj) {
 
         SearchQuery ex = repo.findById(id).orElse(null);
 
@@ -37,19 +37,19 @@ public class SearchQueryServiceimpl implements SearchQueryService {
     }
 
     @Override
-    public SearchQuery getSearchQueryById(Long id) {
+    public SearchQueryRecord getSearchQueryById(Long id) {
         return repo.findById(id).orElse(null);
     }
 
     @Override
-    public List<SearchQuery> getAllSearchQuery() {
+    public List<SearchQueryRecord> getAllSearchQuery() {
         return repo.findAll();
     }
 
     @Override
     public ResponseEntity<String> deactivateSearchQuery(Long id) {
 
-        SearchQuery ex = repo.findById(id).orElse(null);
+        SearchQueryRecord ex = repo.findById(id).orElse(null);
         ex.setActive(false);
         repo.save(ex);
 
