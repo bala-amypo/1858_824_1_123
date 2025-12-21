@@ -26,7 +26,11 @@ public Skill updateSkill(Long id,Skill skill){
     exi.setId(Skill.getId());
     exi.setName(Skill.getName());
     exi.setCategory(Skill.getCategory());
-    exi.
+    exi.setDescription(Skill.getDescription());
+    exi.setActive(Skill.getActive());
 }
-
+public Skill getSkillById(Long id){
+    return obj.findById(id);
+}
+public List<Skill> 
 }
