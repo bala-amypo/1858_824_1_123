@@ -43,24 +43,18 @@ public class SkillServiceimpl implements SkillService{
 
     @Override
     public Skill getSkillById(Long id){
-        return obj.findById(id).orElse(null);      // FIX TYPE
+        return obj.findById(id).orElse(null);      
     }
 
-    // ---------------------------
-    // getAllSkills
-    // ---------------------------
     @Override
     public List<Skill> getAllSkills(){
         return obj.findAll();
     }
 
-    // ---------------------------
-    // deactivateSkill
-    // ---------------------------
     @Override
     public ResponseEntity<String> deactivateSkill(Long id){
 
-        Skill jk = obj.findById(id).orElse(null);   // FIX
+        Skill jk = obj.findById(id).orElse(null);   
 
             jk.setActive(false);
             obj.save(jk);
