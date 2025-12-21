@@ -26,7 +26,6 @@ public class EmployeeSkillServiceimpl implements EmployeeSkillService {
         EmployeeSkill exi = obj.findById(id).orElse(null); 
 
         if(exi != null){
-            exi.setSkillLevel(employeeSkill.getSkillLevel());
             exi.setActive(employeeSkill.getActive());
             exi.setEmployee(employeeSkill.getEmployee());
             exi.setSkill(employeeSkill.getSkill());
