@@ -1,35 +1,35 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.Query;
-import com.example.demo.service.QueryService;
+import com.example.demo.model.SearchQuery;
+import com.example.demo.service.SearchQueryService;
+import com.example.demo.repository.SearchQueryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.demo.repository.QueryRepository;
-
-import java.util.List;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+
 @Service
-public class QueryServiceImpl implements QueryService {
+public class SearchQueryServiceImpl implements SearchQueryService {
 
     @Autowired
-    QueryRepository obj;
+    SearchQueryRepository obj;
 
     @Override
-    public Query createQuery(Query query){
-        return obj.save(query);
+    public SearchQuery createSearchQuery(SearchQuery searchQuery){
+        return obj.save(searchQuery);
     }
 
     @Override
-    public Query updateQuery(Long id, Query query){
+    public SearchQuery updateSearchQuery(Long id, SearchQuery searchQuery){
 
-        Query exi = obj.findById(id).orElse(null);
+        SearchQuery exi = obj.findById(id).orElse(null);
 
         if(exi != null){
-            exi.setName(query.getName());
-            exi.setQueryText(query.getQueryText());
-            exi.setDescription(query.getDescription());
-            exi.setActive(query.getActive());
+            exi.setName(searchQuery.getName());
+            exi.setQuery(searchQuery.getQuery());
+            exi.setDescription(searchQuery.getDescription());
+            exi.setActive(searchQuery.getActive());
             return obj.save(exi);
         }
 
@@ -37,23 +37,23 @@ public class QueryServiceImpl implements QueryService {
     }
 
     @Override
-    public Query getQueryById(Long id){
+    public SearchQuery getSearchQueryById(Long id){
         return obj.findById(id).orElse(null);
     }
 
     @Override
-    public List<Query> getAllQueries(){
+    public List<SearchQuery> getAllSearchQueries(){
         return obj.findAll();
     }
 
     @Override
-    public ResponseEntity<String> deactivateQuery(Long id){
+    public ResponseEntity<String> deactivateSearchQuery(Long id){
 
-        Query jk = obj.findById(id).orElse(null);
+        SearchQuery jk = obj.findById(id).orElse(null);
 
         jk.setActive(false);
         obj.save(jk);
 
-        return ResponseEntity.ok("Query Deactivated");
+        return ResponseEntity.ok("Search Query Deactivated");
     }
 }

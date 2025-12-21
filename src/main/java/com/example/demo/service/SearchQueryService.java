@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Query;
+import com.example.demo.model.SearchQuery;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 
