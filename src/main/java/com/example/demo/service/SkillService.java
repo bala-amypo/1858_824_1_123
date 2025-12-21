@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.Skill;
 import java.util.List;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity;   // FIXED IMPORT
 
 public interface SkillService{
     Skill createSkill(Skill skill);

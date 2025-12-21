@@ -18,25 +18,68 @@ public class SkillServiceImpl implements SkillService{
     @Autowired
     SkillRepository obj;
 
-   public Skill createSkill(Skill skill){
-    return obj.save(skill);
-   }
-public Skill updateSkill(Long id,Skill skill){
-    Skill exi=obj.getById(id);
-    exi.setId(Skill.getId());
-    exi.setName(Skill.getName());
-    exi.setCategory(Skill.getCategory());
-    exi.setDescription(Skill.getDescription());
-    exi.setActive(Skill.getActive());
-}
-public Skill getSkillById(Long id){
-    return obj.findById(id);
-}
-public List<Skill> getAllSkills(){
-    return obj.findAll();
-}
-public void deactiveSkill(Long id){
-    Skill jk=obj.getById(id);
-    obj.delete(jk);
-}
+    // ---------------------------
+    // createSkill
+    // ---------------------------
+    @Override
+    public Skill createSkill(Skill skill){
+        return obj.save(skill);
+    }
+
+    // ---------------------------
+    // updateSkill
+    // ---------------------------
+    @Override
+    public Skill updateSkill(Long id,Skill skill){
+
+        Skill exi = obj.findById(id).orElse(null); // FIXED findById
+
+        if(exi != null){
+            exi.setId(skill.getId());              // YOUR STRUCTURE KEPT
+            exi.setName(skill.getName());
+            exi.setCategory(skill.getCategory());
+            exi.setDescription(skill.getDescription());
+            exi.setActive(skill.getActive());
+            
+            return obj.save(exi);                  // ADDED RETURN
+        }
+
+        return null;                               // REQUIRED RETURN
+    }
+
+    // ---------------------------
+    // getById
+    // ---------------------------
+    @Override
+    public Skill getSkillById(Long id){
+        return obj.findById(id).orElse(null);      // FIX TYPE
+    }
+
+    // ---------------------------
+    // getAllSkills
+    // ---------------------------
+    @Override
+    public List<Skill> getAllSkills(){
+        return obj.findAll();
+    }
+
+    // ---------------------------
+    // deactivateSkill
+    // ---------------------------
+    @Override
+    public ResponseEntity<String> deactivateSkill(Long id){
+
+        Skill jk = obj.findById(id).orElse(null);   // FIX
+
+        if(jk != null){
+            jk.setActive(false);
+            obj.save(jk);
+
+            return ResponseEntity.ok("Skill Deactivated");
+        }
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body("Skill Not Found");
+    }
 }
