@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SearchQueryServiceImpl implements SearchQueryService {
+public class SearchQueryServiceimpl implements SearchQueryService {
 
     @Autowired
     SearchQueryRepository repo;
