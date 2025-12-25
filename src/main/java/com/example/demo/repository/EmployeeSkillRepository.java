@@ -14,11 +14,16 @@ public interface EmployeeSkillRepository extends JpaRepository<EmployeeSkill, Lo
     List<EmployeeSkill> findBySkillIdAndActiveTrue(Long skillId);
 
     @Query("""
-           SELECT es.employee
-           FROM EmployeeSkill es
-           WHERE es.skill.name IN :skills
-           GROUP BY es.employee
-           HAVING COUNT(DISTINCT es.skill.name) = :#{#skills.size()}
-           """)
-    List<Employee> findEmployeesByAllSkillNames(List<String> skills, Long userId);
+        SELECT es.employee
+        FROM EmployeeSkill es
+        WHERE es.skill.name IN :skills
+        AND :userId IS NOT NULL
+        GROUP BY es.employee
+        HAVING COUNT(DISTINCT es.skill.name) = :#{#skills.size()}
+    """)
+    List<Employee> findEmployeesByAllSkillNames(
+        @org.springframework.data.repository.query.Param("skills") List<String> skills,
+        @org.springframework.data.repository.query.Param("userId") Long userId
+    );
+
 }
