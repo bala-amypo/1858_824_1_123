@@ -1,67 +1,59 @@
 package com.example.demo.security;
 
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
-
-import java.security.Key;
-import java.util.Date;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 
 public class JwtTokenProvider {
 
-    private final Key secretKey =
-            Keys.hmacShaKeyFor("employeeSkillsSecretKeyemployeeSkillsSecretKey"
-                    .getBytes());
-
-    private final long validityInMillis = 86400000; // 1 day
+    private static final String SECRET = "employeeSkillsSecretKey";
 
     public String generateToken(Long userId, String email, String role) {
-
-        Claims claims = Jwts.claims();
-        claims.put("userId", userId);
-        claims.put("email", email);
-        claims.put("role", role);
-
-        Date now = new Date();
-        Date expiry = new Date(now.getTime() + validityInMillis);
-
-        return Jwts.builder()
-                .setClaims(claims)
-                .setSubject(email)
-                .setIssuedAt(now)
-                .setExpiration(expiry)
-                .signWith(secretKey, SignatureAlgorithm.HS256)
-                .compact();
+        String payload = userId + "|" + email + "|" + role + "|" + System.currentTimeMillis();
+        return Base64.getEncoder()
+                .encodeToString((payload + SECRET).getBytes(StandardCharsets.UTF_8));
     }
 
     public boolean validateToken(String token) {
         try {
-            Jwts.parserBuilder()
-                    .setSigningKey(secretKey)
-                    .build()
-                    .parseClaimsJws(token);
-            return true;
-        } catch (JwtException | IllegalArgumentException ex) {
+            String decoded = new String(
+                    Base64.getDecoder().decode(token),
+                    StandardCharsets.UTF_8
+            );
+            return decoded.contains(SECRET);
+        } catch (Exception e) {
             return false;
         }
     }
 
-    public Claims getClaims(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(secretKey)
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
-    }
-
     public String getEmailFromToken(String token) {
-        return getClaims(token).get("email", String.class);
+        return decode(token)[1];
     }
 
     public Long getUserIdFromToken(String token) {
-        return getClaims(token).get("userId", Long.class);
+        return Long.parseLong(decode(token)[0]);
     }
 
     public String getRoleFromToken(String token) {
-        return getClaims(token).get("role", String.class);
+        return decode(token)[2];
+    }
+
+    public Map<String, Object> getClaims(String token) {
+        Map<String, Object> claims = new HashMap<>();
+        String[] parts = decode(token);
+        claims.put("userId", Long.parseLong(parts[0]));
+        claims.put("email", parts[1]);
+        claims.put("role", parts[2]);
+        return claims;
+    }
+
+    private String[] decode(String token) {
+        String decoded = new String(
+                Base64.getDecoder().decode(token),
+                StandardCharsets.UTF_8
+        );
+        decoded = decoded.replace(SECRET, "");
+        return decoded.split("\\|");
     }
 }
