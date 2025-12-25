@@ -16,16 +16,29 @@ public class JwtTokenProvider {
     }
 
     public boolean validateToken(String token) {
-        try {
-            String decoded = new String(
-                    Base64.getDecoder().decode(token),
-                    StandardCharsets.UTF_8
-            );
-            return decoded.contains(SECRET);
-        } catch (Exception e) {
+    try {
+        String decoded = new String(
+                Base64.getDecoder().decode(token),
+                StandardCharsets.UTF_8
+        );
+        
+        if (!decoded.endsWith(SECRET)) {
             return false;
         }
+
+        String payload = decoded.substring(0, decoded.length() - SECRET.length());
+        String[] parts = payload.split("\\|");
+
+        return parts.length == 4
+                && !parts[0].isBlank()
+                && !parts[1].isBlank()
+                && !parts[2].isBlank()
+                && !parts[3].isBlank();
+
+    } catch (Exception e) {
+        return false;
     }
+}
 
     public String getEmailFromToken(String token) {
         return decode(token)[1];
