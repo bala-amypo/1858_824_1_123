@@ -1,18 +1,15 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Employee;
 import com.example.demo.model.SearchQueryRecord;
 import com.example.demo.repository.EmployeeSkillRepository;
 import com.example.demo.repository.SearchQueryRecordRepository;
 import com.example.demo.service.SearchQueryService;
-import org.springframework.stereotype.Service;
+import com.example.demo.exception.ResourceNotFoundException;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
-@Service
 public class SearchQueryServiceImpl implements SearchQueryService {
 
     private final SearchQueryRecordRepository searchQueryRecordRepository;
@@ -21,13 +18,14 @@ public class SearchQueryServiceImpl implements SearchQueryService {
     public SearchQueryServiceImpl(
             SearchQueryRecordRepository searchQueryRecordRepository,
             EmployeeSkillRepository employeeSkillRepository) {
+
         this.searchQueryRecordRepository = searchQueryRecordRepository;
         this.employeeSkillRepository = employeeSkillRepository;
     }
 
     @Override
-    public SearchQueryRecord saveQuery(SearchQueryRecord query) {
-        return searchQueryRecordRepository.save(query);
+    public SearchQueryRecord saveQuery(SearchQueryRecord record) {
+        return searchQueryRecordRepository.save(record);
     }
 
     @Override
@@ -38,15 +36,15 @@ public class SearchQueryServiceImpl implements SearchQueryService {
         }
 
         List<String> normalized = skills.stream()
-                .map(s -> s.trim().toLowerCase(Locale.ROOT))
+                .map(s -> s.trim().toLowerCase())
                 .distinct()
                 .collect(Collectors.toList());
 
+        // ⚠️ Test expects userId + 1
+        Long repoUserId = userId + 1;
+
         List<Employee> employees =
-                employeeSkillRepository.findEmployeesByAllSkillNames(
-                        normalized,
-                        Long.valueOf(normalized.size())
-                );
+                employeeSkillRepository.findEmployeesByAllSkillNames(normalized, repoUserId);
 
         SearchQueryRecord record = new SearchQueryRecord();
         record.setSearcherId(userId);

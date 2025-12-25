@@ -50,3 +50,4 @@ public class SkillCategoryServiceImpl implements SkillCategoryService {
         skillCategoryRepository.save(cat);
     }
 }
+    
