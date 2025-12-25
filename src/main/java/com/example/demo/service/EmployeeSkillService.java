@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface EmployeeSkillService {
 
-    EmployeeSkill createEmployeeSkill(EmployeeSkill employeeSkill);
+    EmployeeSkill createEmployeeSkill(EmployeeSkill mapping);
 
-    EmployeeSkill updateEmployeeSkill(Long id, EmployeeSkill employeeSkill);
+    EmployeeSkill updateEmployeeSkill(Long id, EmployeeSkill mapping);
 
     List<EmployeeSkill> getSkillsForEmployee(Long employeeId);
 

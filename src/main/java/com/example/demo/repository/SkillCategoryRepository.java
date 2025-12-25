@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface SkillCategoryRepository extends JpaRepository<SkillCategory, Long> {
 
     Optional<SkillCategory> findByCategoryName(String categoryName);
+
 }

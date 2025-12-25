@@ -1,14 +1,12 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Skill;
 import com.example.demo.repository.SkillRepository;
 import com.example.demo.service.SkillService;
-import org.springframework.stereotype.Service;
+import com.example.demo.exception.ResourceNotFoundException;
 
 import java.util.List;
 
-@Service
 public class SkillServiceImpl implements SkillService {
 
     private final SkillRepository skillRepository;
@@ -19,9 +17,7 @@ public class SkillServiceImpl implements SkillService {
 
     @Override
     public Skill createSkill(Skill skill) {
-        if (skill.getActive() == null) {
-            skill.setActive(true);
-        }
+        skill.setActive(true);
         return skillRepository.save(skill);
     }
 

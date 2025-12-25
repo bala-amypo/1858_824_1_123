@@ -1,9 +1,9 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.SkillCategory;
 import com.example.demo.repository.SkillCategoryRepository;
 import com.example.demo.service.SkillCategoryService;
+import com.example.demo.exception.ResourceNotFoundException;
 
 import java.util.List;
 
@@ -44,9 +44,9 @@ public class SkillCategoryServiceImpl implements SkillCategoryService {
 
     @Override
     public void deactivateCategory(Long id) {
-        SkillCategory existing = skillCategoryRepository.findById(id)
+        SkillCategory cat = skillCategoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("SkillCategory not found"));
-        existing.setActive(false);
-        skillCategoryRepository.save(existing);
+        cat.setActive(false);
+        skillCategoryRepository.save(cat);
     }
 }
