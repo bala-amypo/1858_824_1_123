@@ -22,7 +22,6 @@ public class ServletConfig {
                     HttpServletResponse response
             ) throws IOException {
 
-                response.setContentType("text/plain");
                 response.setStatus(HttpServletResponse.SC_OK);
                 response.getWriter().write("Hello from simple servlet");
             }
