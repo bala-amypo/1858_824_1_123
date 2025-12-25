@@ -1,13 +1,18 @@
 package com.example.demo.service;
 
 import com.example.demo.model.SkillCategory;
+
 import java.util.List;
-import org.springframework.http.ResponseEntity;
 
 public interface SkillCategoryService {
-    public SkillCategory createSkillCategory(SkillCategory skillCategory);
-    public SkillCategory updateSkillCategory(Long id, SkillCategory skillCategory);
-    public SkillCategory getSkillCategoryById(Long id);
-    public List<SkillCategory> getAllSkillCategories();
-    public ResponseEntity<String> deactivateSkillCategory(Long id);
+
+    SkillCategory createCategory(SkillCategory category);
+
+    SkillCategory updateCategory(Long id, SkillCategory category);
+
+    SkillCategory getCategoryById(Long id);
+
+    List<SkillCategory> getAllCategories();
+
+    void deactivateCategory(Long id);
 }

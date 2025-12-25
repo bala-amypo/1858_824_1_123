@@ -1,14 +1,17 @@
 package com.example.demo.service;
 
-import java.util.List;
+import com.example.demo.model.Employee;
 import com.example.demo.model.SearchQueryRecord;
-import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 
 public interface SearchQueryService {
 
-    SearchQueryRecord createSearchQuery(SearchQueryRecord obj);
-    SearchQueryRecord updateSearchQuery(Long id, SearchQueryRecord obj);
-    SearchQueryRecord getSearchQueryById(Long id);
-    List<SearchQueryRecord> getAllSearchQuery();
-    ResponseEntity<String> deactivateSearchQuery(Long id);
+    SearchQueryRecord saveQuery(SearchQueryRecord query);
+
+    List<Employee> searchEmployeesBySkills(List<String> skills, Long userId);
+
+    SearchQueryRecord getQueryById(Long id);
+
+    List<SearchQueryRecord> getQueriesForUser(Long userId);
 }
