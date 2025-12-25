@@ -2,26 +2,32 @@ package com.example.demo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.PrePersist;
-import java.sql.Timestamp;
+import jakarta.persistence.Table;
+
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "search_query_records")
 public class SearchQueryRecord {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long searcherId;
+
     private String skillsRequested;
-    private Long resultsCount;
-    private Timestamp searchedAt;
+
+    private Integer resultsCount = 0;
+
+    private LocalDateTime searchedAt;
 
     @PrePersist
-    protected void onCreate() {
-        this.searchedAt = new Timestamp(System.currentTimeMillis());
+    public void onCreate() {
+        this.searchedAt = LocalDateTime.now();
+        if (this.resultsCount == null) {
+            this.resultsCount = 0;
+        }
     }
 
     public Long getId() {
@@ -48,32 +54,15 @@ public class SearchQueryRecord {
         this.skillsRequested = skillsRequested;
     }
 
-    public Long getResultsCount() {
+    public Integer getResultsCount() {
         return resultsCount;
     }
 
-    public void setResultsCount(Long resultsCount) {
+    public void setResultsCount(Integer resultsCount) {
         this.resultsCount = resultsCount;
     }
 
-    public Timestamp getSearchedAt() {
+    public LocalDateTime getSearchedAt() {
         return searchedAt;
     }
-
-    public void setSearchedAt(Timestamp searchedAt) {
-        this.searchedAt = searchedAt;
-    }
-
-
-    public SearchQueryRecord(Long id, Long searcherId, String skillsRequested, Long resultsCount, Timestamp searchedAt){
-        this.id = id;
-        this.searcherId = searcherId;
-        this.skillsRequested = skillsRequested;
-        this.resultsCount = resultsCount;
-        this.searchedAt = searchedAt;
-    }
-
-    public SearchQueryRecord(){
-    }
-
 }
