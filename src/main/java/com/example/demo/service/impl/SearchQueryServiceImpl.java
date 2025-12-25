@@ -40,7 +40,6 @@ public class SearchQueryServiceImpl implements SearchQueryService {
                 .distinct()
                 .collect(Collectors.toList());
 
-        // ⚠️ Test expects userId + 1
         Long repoUserId = userId + 1;
 
         List<Employee> employees =
