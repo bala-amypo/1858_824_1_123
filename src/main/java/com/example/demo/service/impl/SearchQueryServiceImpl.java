@@ -6,11 +6,13 @@ import com.example.demo.model.SearchQueryRecord;
 import com.example.demo.repository.EmployeeSkillRepository;
 import com.example.demo.repository.SearchQueryRecordRepository;
 import com.example.demo.service.SearchQueryService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
+@Service
 public class SearchQueryServiceImpl implements SearchQueryService {
 
     private final SearchQueryRecordRepository searchQueryRecordRepository;
@@ -18,8 +20,7 @@ public class SearchQueryServiceImpl implements SearchQueryService {
 
     public SearchQueryServiceImpl(
             SearchQueryRecordRepository searchQueryRecordRepository,
-            EmployeeSkillRepository employeeSkillRepository
-    ) {
+            EmployeeSkillRepository employeeSkillRepository) {
         this.searchQueryRecordRepository = searchQueryRecordRepository;
         this.employeeSkillRepository = employeeSkillRepository;
     }
