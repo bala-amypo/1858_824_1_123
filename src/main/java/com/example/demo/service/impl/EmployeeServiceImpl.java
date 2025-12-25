@@ -4,10 +4,11 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Employee;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.service.EmployeeService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
+@Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
@@ -50,9 +51,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deactivateEmployee(Long id) {
-        Employee existing = employeeRepository.findById(id)
+        Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
-        existing.setActive(false);
-        employeeRepository.save(existing);
+        employee.setActive(false);
+        employeeRepository.save(employee);
     }
 }

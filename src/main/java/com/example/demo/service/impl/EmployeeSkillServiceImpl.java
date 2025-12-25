@@ -8,10 +8,12 @@ import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.repository.EmployeeSkillRepository;
 import com.example.demo.repository.SkillRepository;
 import com.example.demo.service.EmployeeSkillService;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Service
 public class EmployeeSkillServiceImpl implements EmployeeSkillService {
 
     private final EmployeeSkillRepository employeeSkillRepository;
@@ -21,8 +23,7 @@ public class EmployeeSkillServiceImpl implements EmployeeSkillService {
     public EmployeeSkillServiceImpl(
             EmployeeSkillRepository employeeSkillRepository,
             EmployeeRepository employeeRepository,
-            SkillRepository skillRepository
-    ) {
+            SkillRepository skillRepository) {
         this.employeeSkillRepository = employeeSkillRepository;
         this.employeeRepository = employeeRepository;
         this.skillRepository = skillRepository;
@@ -35,18 +36,20 @@ public class EmployeeSkillServiceImpl implements EmployeeSkillService {
             throw new IllegalArgumentException("Experience years");
         }
 
-        List<String> allowed = Arrays.asList("Beginner", "Intermediate", "Advanced", "Expert");
+        List<String> allowed =
+                Arrays.asList("Beginner", "Intermediate", "Advanced", "Expert");
+
         if (!allowed.contains(employeeSkill.getProficiencyLevel())) {
             throw new IllegalArgumentException("Invalid proficiency");
         }
 
         Employee employee = employeeRepository.findById(
-                employeeSkill.getEmployee().getId()
-        ).orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
+                employeeSkill.getEmployee().getId())
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
 
         Skill skill = skillRepository.findById(
-                employeeSkill.getSkill().getId()
-        ).orElseThrow(() -> new ResourceNotFoundException("Skill not found"));
+                employeeSkill.getSkill().getId())
+                .orElseThrow(() -> new ResourceNotFoundException("Skill not found"));
 
         if (!employee.getActive()) {
             throw new IllegalArgumentException("inactive employee");
