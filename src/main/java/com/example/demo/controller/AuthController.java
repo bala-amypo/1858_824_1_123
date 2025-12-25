@@ -6,8 +6,12 @@ import com.example.demo.dto.AuthResponse;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.security.JwtTokenProvider;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
@@ -30,14 +34,22 @@ public class AuthController {
         user.setRole(req.getRole() == null ? "USER" : req.getRole());
         userRepository.save(user);
 
-        String token = tokenProvider.generateToken(user.getId(), user.getEmail(), user.getRole());
+        String token = tokenProvider.generateToken(
+                user.getId(),
+                user.getEmail(),
+                user.getRole()
+        );
         return new AuthResponse(token, user.getId(), user.getEmail(), user.getRole());
     }
 
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthLoginRequest req) {
         User user = userRepository.findByEmail(req.getEmail()).orElseThrow();
-        String token = tokenProvider.generateToken(user.getId(), user.getEmail(), user.getRole());
+        String token = tokenProvider.generateToken(
+                user.getId(),
+                user.getEmail(),
+                user.getRole()
+        );
         return new AuthResponse(token, user.getId(), user.getEmail(), user.getRole());
     }
 }
