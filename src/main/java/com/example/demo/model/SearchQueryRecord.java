@@ -1,10 +1,6 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.Table;
-
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,6 +8,7 @@ import java.time.LocalDateTime;
 public class SearchQueryRecord {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long searcherId;
@@ -30,39 +27,19 @@ public class SearchQueryRecord {
         }
     }
 
-    public Long getId() {
-        return id;
-    }
+    // Getters and setters
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Long getSearcherId() {
-        return searcherId;
-    }
+    public Long getSearcherId() { return searcherId; }
+    public void setSearcherId(Long searcherId) { this.searcherId = searcherId; }
 
-    public void setSearcherId(Long searcherId) {
-        this.searcherId = searcherId;
-    }
+    public String getSkillsRequested() { return skillsRequested; }
+    public void setSkillsRequested(String skillsRequested) { this.skillsRequested = skillsRequested; }
 
-    public String getSkillsRequested() {
-        return skillsRequested;
-    }
+    public Integer getResultsCount() { return resultsCount; }
+    public void setResultsCount(Integer resultsCount) { this.resultsCount = resultsCount; }
 
-    public void setSkillsRequested(String skillsRequested) {
-        this.skillsRequested = skillsRequested;
-    }
-
-    public Integer getResultsCount() {
-        return resultsCount;
-    }
-
-    public void setResultsCount(Integer resultsCount) {
-        this.resultsCount = resultsCount;
-    }
-
-    public LocalDateTime getSearchedAt() {
-        return searchedAt;
-    }
+    public LocalDateTime getSearchedAt() { return searchedAt; }
 }
