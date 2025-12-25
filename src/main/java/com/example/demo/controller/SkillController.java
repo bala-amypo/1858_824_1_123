@@ -2,41 +2,53 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Skill;
 import com.example.demo.service.SkillService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import org.springframework.http.ResponseEntity;
 
 @RestController
-@RequestMapping("/skill")
+@RequestMapping("/api/skills")
 public class SkillController {
 
-    @Autowired
-    private SkillService skillService;
+    private final SkillService skillService;
 
-    @PostMapping("/create")
-    public Skill createSkill(@RequestBody Skill skill){
-        return skillService.createSkill(skill);
+    public SkillController(SkillService skillService) {
+        this.skillService = skillService;
     }
 
-    @PutMapping("/update/{id}")
-    public Skill updateSkill(@PathVariable Long id, @RequestBody Skill skill){
-        return skillService.updateSkill(id, skill);
+    @PostMapping
+    public ResponseEntity<Skill> create(@RequestBody Skill skill) {
+        return ResponseEntity.ok(skillService.createSkill(skill));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Skill> update(
+            @PathVariable Long id,
+            @RequestBody Skill skill
+    ) {
+        return ResponseEntity.ok(skillService.updateSkill(id, skill));
     }
 
     @GetMapping("/{id}")
-    public Skill getSkillById(@PathVariable Long id){
-        return skillService.getSkillById(id);
+    public ResponseEntity<Skill> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(skillService.getSkillById(id));
     }
 
-    @GetMapping("/all")
-    public List<Skill> getAllSkills(){
-        return skillService.getAllSkills();
+    @GetMapping
+    public ResponseEntity<List<Skill>> getAll() {
+        return ResponseEntity.ok(skillService.getAllSkills());
     }
 
-    @PatchMapping("/deactivate/{id}")
-    public ResponseEntity<String> deactivateSkill(@PathVariable Long id){
-        return skillService.deactivateSkill(id);
+    @PutMapping("/{id}/deactivate")
+    public ResponseEntity<Void> deactivate(@PathVariable Long id) {
+        skillService.deactivateSkill(id);
+        return ResponseEntity.ok().build();
     }
 }
