@@ -1,8 +1,11 @@
 package com.example.demo.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.model.SkillCategory;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SkillCategoryRepository extends JpaRepository<SkillCategory,Long>{
+import java.util.Optional;
 
+public interface SkillCategoryRepository extends JpaRepository<SkillCategory, Long> {
+
+    Optional<SkillCategory> findByCategoryName(String categoryName);
 }
