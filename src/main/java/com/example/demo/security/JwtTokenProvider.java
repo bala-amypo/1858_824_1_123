@@ -1,23 +1,29 @@
 package com.example.demo.security;
 
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.stereotype.Component;
+
+import java.security.Key;
 import java.util.Date;
 
-@Component
 public class JwtTokenProvider {
 
-    private final String secret = "very-secret-key-for-tests-only";
+    private static final Key SECRET_KEY =
+            Keys.hmacShaKeyFor("verySecretKeyForJwtEmployeeSkillMatrixSearch".getBytes());
+
+    private static final long EXPIRATION_TIME = 86400000; // 1 day
 
     public String generateToken(Long userId, String email, String role) {
+
         return Jwts.builder()
                 .setSubject(email)
                 .claim("userId", userId)
                 .claim("role", role)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
-                .signWith(Keys.hmacShaKeyFor(secret.getBytes()), SignatureAlgorithm.HS256)
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
                 .compact();
     }
 
@@ -32,7 +38,7 @@ public class JwtTokenProvider {
 
     public Claims getClaims(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(secret.getBytes())
+                .setSigningKey(SECRET_KEY)
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
@@ -43,10 +49,15 @@ public class JwtTokenProvider {
     }
 
     public Long getUserIdFromToken(String token) {
-        return getClaims(token).get("userId", Long.class);
+        Object val = getClaims(token).get("userId");
+        if (val instanceof Integer) {
+            return ((Integer) val).longValue();
+        }
+        return (Long) val;
     }
 
     public String getRoleFromToken(String token) {
-        return getClaims(token).get("role", String.class);
+        Object role = getClaims(token).get("role");
+        return role != null ? role.toString() : null;
     }
 }
