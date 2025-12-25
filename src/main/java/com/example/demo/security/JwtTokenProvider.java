@@ -1,3 +1,52 @@
-public class JwtTokenProvider{
-    
+package com.example.demo.security;
+
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.stereotype.Component;
+import java.util.Date;
+
+@Component
+public class JwtTokenProvider {
+
+    private final String secret = "very-secret-key-for-tests-only";
+
+    public String generateToken(Long userId, String email, String role) {
+        return Jwts.builder()
+                .setSubject(email)
+                .claim("userId", userId)
+                .claim("role", role)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
+                .signWith(Keys.hmacShaKeyFor(secret.getBytes()), SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            getClaims(token);
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+    public Claims getClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(secret.getBytes())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
+    public String getEmailFromToken(String token) {
+        return getClaims(token).getSubject();
+    }
+
+    public Long getUserIdFromToken(String token) {
+        return getClaims(token).get("userId", Long.class);
+    }
+
+    public String getRoleFromToken(String token) {
+        return getClaims(token).get("role", String.class);
+    }
 }
