@@ -19,24 +19,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-                // ✅ ALLOW SWAGGER COMPLETELY
-                .requestMatchers(
-                        "/swagger-ui/**",
-                        "/swagger-ui.html",
-                        "/v3/api-docs/**",
-                        "/auth/**",
-                        "/hello-servlet"
-                ).permitAll()
-                // ❗ EVERYTHING ELSE NEEDS AUTH
-                .anyRequest().authenticated()
-            )
-            // 🔴 IMPORTANT: disable default login page
-            .formLogin(form -> form.disable())
-            .httpBasic(basic -> basic.disable());
+       http
+    .csrf(csrf -> csrf.disable())
+    .authorizeHttpRequests(auth -> auth
+        .requestMatchers(
+            "/auth/**",
+            "/swagger-ui/**",
+            "/v3/api-docs/**",
+            "/hello-servlet",
+            "/api/**"
+        ).permitAll()
+        .anyRequest().authenticated()
+    );
 
-        return http.build();
     }
 }
