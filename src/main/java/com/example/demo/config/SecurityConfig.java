@@ -10,7 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-    // 🔑 ADD THIS
+    // JWT bean (already fixed)
     @Bean
     public JwtTokenProvider jwtTokenProvider() {
         return new JwtTokenProvider();
@@ -22,6 +22,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
+                // ✅ ALLOW SWAGGER COMPLETELY
                 .requestMatchers(
                         "/swagger-ui/**",
                         "/swagger-ui.html",
@@ -29,8 +30,12 @@ public class SecurityConfig {
                         "/auth/**",
                         "/hello-servlet"
                 ).permitAll()
+                // ❗ EVERYTHING ELSE NEEDS AUTH
                 .anyRequest().authenticated()
-            );
+            )
+            // 🔴 IMPORTANT: disable default login page
+            .formLogin(form -> form.disable())
+            .httpBasic(basic -> basic.disable());
 
         return http.build();
     }
