@@ -22,9 +22,6 @@ public class SkillServiceImpl implements SkillService {
         Optional<Skill> existing =
                 skillRepository.findByName(skill.getName());
 
-        if (existing.isPresent()) {
-            throw new IllegalArgumentException("Skill already exists");
-        }
 
         skill.setActive(true);
         return skillRepository.save(skill);
