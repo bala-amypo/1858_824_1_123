@@ -1,7 +1,5 @@
 package com.example.demo.model;
 
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +7,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import java.util.List;
 
 @Entity
 @Table(name = "skills")
@@ -33,8 +33,6 @@ public class Skill {
     public Skill() {
         this.active = true;
     }
-
-    // Getters and setters
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
