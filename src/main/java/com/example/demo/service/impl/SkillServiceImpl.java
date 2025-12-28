@@ -6,7 +6,6 @@ import com.example.demo.repository.SkillRepository;
 import com.example.demo.service.SkillService;
 
 import java.util.List;
-import java.util.Optional;
 
 public class SkillServiceImpl implements SkillService {
 
@@ -19,12 +18,16 @@ public class SkillServiceImpl implements SkillService {
     @Override
     public Skill createSkill(Skill skill) {
 
-        Optional<Skill> existing =
-                skillRepository.findByName(skill.getName());
-
-
-        skill.setActive(true);
-        return skillRepository.save(skill);
+        return skillRepository.findByName(skill.getName())
+                .map(existing -> {
+                    existing.setCategory(skill.getCategory());
+                    existing.setDescription(skill.getDescription());
+                    return skillRepository.save(existing);
+                })
+                .orElseGet(() -> {
+                    skill.setActive(true);
+                    return skillRepository.save(skill);
+                });
     }
 
     @Override
